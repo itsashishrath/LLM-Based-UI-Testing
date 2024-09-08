@@ -24,7 +24,7 @@ json_format = """
       "description": string,
       "pre_conditions": string,
       "steps": [string, string, ...],
-      "expected_results": [string, string, ...]
+      "expected_results": [string, string,]
     },
     ...
   ]
@@ -61,7 +61,7 @@ def generate_instructions_with_gemini(context, image_paths):
         Expected Result: What should happen if the feature works correctly.
         
         Present the information in a clear, structured format.
-        This is the JSON format you should return:
+        This is the structure of JSON format you should return:
         {json_format}
         To explain this structure:
 
@@ -73,8 +73,7 @@ def generate_instructions_with_gemini(context, image_paths):
         "pre_conditions": A string describing the conditions before the feature is tested.
         "steps": An array of strings, where each string describes a step in testing the feature.
         "expected_results": An array of strings, where each string describes an expected result of the feature.
-
-        This structure repeats for each feature in the "features" array.
+        Remember, it should be valid JSON only.
         """
         
         images = [PIL.Image.open(path) for path in image_paths]
